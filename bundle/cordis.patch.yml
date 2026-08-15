@@ -1,0 +1,11 @@
+# DSH Wiki bundle: enables the schedule capability (weekly wiki
+# maintenance reminders) for the profile this bundle is installed into.
+#
+# Skills are SKILL.md instruction sets, not plugins, so they are not
+# registered here — copy them into your vault's .dsh/skills/ directory
+# (project-level discovery, rank 100) per bundle/README.md.
+- insert:
+    - id: time-context
+      name: '@deepseek-ai/dsh-time-context'
+    - id: schedule
+      name: '@deepseek-ai/dsh-schedule'
