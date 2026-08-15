@@ -16,7 +16,9 @@ from pathlib import Path
 
 import yaml
 
-VAULT = Path(os.environ.get("WIKI_VAULT", str(Path.home() / "wiki")))
+# Vault root: WIKI_VAULT env overrides; otherwise auto-detect from this
+# script location (.dsh/scripts -> .dsh -> vault root).
+VAULT = Path(os.environ.get("WIKI_VAULT") or Path(__file__).resolve().parents[2])
 INDEX = VAULT / ".wiki" / "index.json"
 SECTIONS = ["notes", "mocs", "inbox"]
 EXCLUDE = {"README.md"}
