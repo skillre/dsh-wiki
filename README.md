@@ -27,19 +27,15 @@ dsh --profile <你的profile> --dump-config
 
 bundle 提供：**schedule 定时能力**（每周自动巡检/周报的前提）+ skills/scripts/templates 资源。
 
-### Skills 放置（bundle 不含注册，一步复制）
-
-DSH 的 skills 是 SKILL.md 指令集，靠目录发现而非插件注册。复制到**你的 vault**：
+### 初始化你的 vault（一条命令，指定任意目录）
 
 ```sh
-# bundle 位于 ~/.dsh/profiles/<你的profile>/node_modules/dsh-wiki/
-mkdir -p <你的vault>/.dsh/skills
-cp -r ~/.dsh/profiles/<你的profile>/node_modules/dsh-wiki/skills/* <你的vault>/.dsh/skills/
-cp -r ~/.dsh/profiles/<你的profile>/node_modules/dsh-wiki/scripts  <你的vault>/.dsh/
-cp -r ~/.dsh/profiles/<你的profile>/node_modules/dsh-wiki/templates <你的vault>/
+npx dsh-wiki-init ~/mywiki     # 初始化到 ~/mywiki（任意路径都行）
+dsh-wiki-init                  # 省略路径 = 当前目录
 ```
 
-skills 放进 vault 的 `.dsh/skills/` 后通过 **project 级发现**（rank 100）只对该 vault 的会话可见——不污染全局。脚本自动定位 vault 根，零配置。
+命令把 5 个 wiki skills、巡检脚本（gen-index.py / maintain.py）、笔记模板复制到 `<vault>/.dsh/` 与 `<vault>/templates/`。
+skills 通过 **project 级发现**（rank 100）只对该 vault 的会话可见——不污染全局；脚本自动定位 vault 根，零配置。
 
 ## 方式 2：模板 vault（clone 即用）
 

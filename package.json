@@ -4,10 +4,14 @@
   "type": "module",
   "files": [
     "cordis.patch.yml",
+    "init.js",
     "skills/",
     "scripts/",
     "templates/"
   ],
+  "bin": {
+    "dsh-wiki-init": "./init.js"
+  },
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
