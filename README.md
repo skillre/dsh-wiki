@@ -13,7 +13,7 @@
 dsh plugin --profile <你的profile> add dsh-wiki
 
 # 方式 2：GitHub（本仓库未发布 npm 前）
-dsh plugin --profile <你的profile> add github:<你>/dsh-wiki
+dsh plugin --profile <你的profile> add github:skillre/dsh-wiki
 
 # 方式 3：本地 tarball（私有分发）
 pnpm pack && dsh plugin --profile <你的profile> add ./dsh-wiki-0.1.0.tgz
