@@ -37,6 +37,17 @@ dsh-wiki-init                  # 省略路径 = 当前目录
 命令把 5 个 wiki skills、巡检脚本（gen-index.py / maintain.py）、笔记模板复制到 `<vault>/.dsh/` 与 `<vault>/templates/`。
 skills 通过 **project 级发现**（rank 100）只对该 vault 的会话可见——不污染全局；脚本自动定位 vault 根，零配置。
 
+## 已知冲突（先读）
+
+bundle 会 insert `time-context` 与 `schedule` 两个插件行。**如果目标 profile 的
+`cordis.patch.yml`（或已装的另一个 bundle）已经手动 insert 过这两个 id**，启动会报：
+
+```
+Error: ... duplicate loader entry id: time-context
+```
+
+解决：删除 profile 里手动加的 `time-context`/`schedule` 行（schedule 只保留一个来源），再重启。
+
 ## 方式 2：模板 vault（clone 即用）
 
 `vault-template/` 是完整的 vault 骨架 + 示例笔记：
