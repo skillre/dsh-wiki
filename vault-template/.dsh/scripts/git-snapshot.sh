@@ -16,7 +16,15 @@ DEST="${WIKI_REPO:-$HOME/wiki-repo}"
 
 mkdir -p "$DEST"
 echo "snapshot: $SRC -> $DEST"
-rsync -a --delete --exclude=.git "$SRC/" "$DEST/"
+# Mirror only text content: binaries & tool state live in iCloud, not git.
+rsync -a --delete \
+  --exclude=.git \
+  --exclude=.obsidian/ \
+  --exclude=.DS_Store \
+  --exclude='*.pptx' --exclude='*.docx' --exclude='*.xls*' \
+  --exclude='*.zip' --exclude='*.pdf' --exclude='*.png' \
+  --exclude='*.jpg' --exclude='*.jpeg' --exclude='*.mp4' \
+  "$SRC/" "$DEST/"
 
 cd "$DEST"
 [ -d .git ] || git init -b main -q
